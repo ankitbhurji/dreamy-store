@@ -1,0 +1,266 @@
+.container{
+    /* padding: 20px; */
+    position: fixed;
+}
+.wrapper{
+    display: flex;
+    /* padding: 50px; */
+    padding-left: 120px;
+    padding-right: 120px;
+    height: 80vh;
+    /* background-color: green; */
+}
+.heading{
+    background-color: #a4d9a3;
+    width: 100%;
+    height: 4rem;
+    
+}
+
+.heading p{
+    color: #0f4f0d;
+    font-size: 25px;
+    margin-left: 100px;
+    padding: 12px;
+    padding-left: 20px;
+    font-weight: 800;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.containerLeft{
+    /* background-color: red; */
+    width: 18rem;
+    height: auto;
+    /* padding-left: 4rem; */
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    /* margin-top: 3rem; */
+    padding-top: 2rem;
+    position: sticky;
+    /* position: fixed; */
+    /* background-color: cyan; */
+}
+input[type='search']{
+    width: 100%;
+    outline: none;
+    /* border: 1px solid black; */
+    border: none;
+    background-color: rgb(237, 237, 237);
+    padding: 6px;
+    padding-left: 8px;
+}
+.category{
+    cursor: pointer;
+}
+.categoryList{
+    height: 10rem;
+    margin-top: 8px;
+    overflow: auto;
+}
+.label{
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.selectedCompany{
+    width: 100%;
+}
+.selectCompany{
+    width: 40%;
+    outline: none;
+    background-color: none;
+    border: 2px solid black;
+    margin-top: 8px;
+    outline: none;
+    border: none;
+    background-color: rgb(237, 237, 237);
+    padding: 4px;
+    padding-left: 8px;
+}
+.all{
+    text-decoration: underline rgb(117, 29, 29) 1px;
+}
+.colorSelect{
+    margin-top: 8px;
+}
+.colorArea{
+    display: flex;
+}
+.colors{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 2px;
+    cursor: pointer;
+    /* line-break: auto; */
+}
+
+input[type='range']{
+    /* margin-top: 8px; */
+}
+input[type='checkbox']{
+    margin-left: 30px;
+    /* margin-top: 2px; */
+    width: 15px;
+    height: 15px;
+}
+.clearButton{
+    width: 7rem;
+    border: none;
+    background-color: #fc7303;
+    color: white;
+    border-radius: 5px;
+}
+
+                /* container right */
+
+.containerRight{
+    /* background-color: red; */
+    width: 100%;
+    height: auto;
+    padding-left: 6rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    /* margin-top: 3rem; */
+    padding-top: 2rem;
+    position: sticky;
+}
+.productsCount{
+    margin-left: 1.5rem;
+}
+.Hrline{
+    height: 1px ;
+    margin-top: 1rem;
+    width: 28rem;
+    margin-left: 2rem;
+    background-color: rgb(129, 126, 123);
+}
+.short{
+    margin-left: 2rem;
+}
+.shortSelect{
+    width: 100%;
+    background-color: none;
+    border: none;
+    margin-top: 0px;
+    margin-left: 1rem;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cardContainer{
+    /* background-color: cyan; */
+    /* width: 90%; */
+    height: 100%;
+    overflow-y: scroll ;
+    overflow-x: hidden;
+    padding: 5px;
+    
+}
+.card{
+    /* width: 25%; */
+    height: 10rem;
+    background-color: gray;
+    border-radius: 5px;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+.gridName{
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    margin-top: 8px;
+}
+.gridPrice{
+    font-size: 18px;
+    letter-spacing: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    margin-top: 8px;
+    color: rgb(117, 170, 38);
+}
+.cardDetails{
+   padding-top: 35px;
+}
+.cardName{
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family:sans-serif;
+}
+.cardPrice{
+   color: green;
+   font-weight: 500;
+   font-family: Arial, Helvetica, sans-serif;
+   letter-spacing: 1px;
+}
+.cardDiscription{
+    display:block;
+    width: 500px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.detailsButton{
+    border: none;
+    color: white;
+    background-color: rgb(60, 148, 60);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.footer{
+    text-align: center;
+    background-color: rgb(57, 57, 57);
+    height: 40px;
+    padding-top: 8px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+.footer label{
+    color: #0d9d0b;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    /* border-radius: 10px; */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(222, 222, 222); 
+    /* border-radius: 10px; */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    /* background: #b30000;  */
+  }
