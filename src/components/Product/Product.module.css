@@ -1,0 +1,153 @@
+.container {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  width: 90%;
+  height: 70vh;
+  /* outline: dashed 1px black; */
+  /* Setup */
+  position: relative;
+}
+
+.child {
+  width: 1000px;
+  height: 500px;
+  /* background-color: red; */
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+}
+.buttonBack{
+  border: none;
+  outline: none;
+  background-color: green;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+  padding: 6px;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-family: Monospace;
+  margin-bottom: 25px;
+}
+.mainImage{
+  padding: 10 px;
+}
+.mainImage img{
+  /* padding: 10px; */
+  border-radius: 5px;
+}
+.thumbnail{
+  display: flex;
+  /* background-color: green; */
+  width: 12rem;
+  margin-top: 10px;
+}
+.thumbnail img{
+  /* padding-left: 14px; */
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detailsContainer{
+  padding-left: 50px;
+}
+.name{
+  font-family: system-ui;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.comments{
+  margin-top: 12px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: rgb(95, 93, 93);
+
+}
+.price{
+  color: rgb(7, 115, 36);
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.details{
+  color: rgb(129, 129, 129);
+  font-size: 18px;
+   font-family: serif;
+  line-height: 1.6;
+}
+.tag{
+font-size: 18px;
+font-weight: bold;
+font-family: serif;
+color: rgb(6, 79, 6);
+}
+.tagValue{
+  font-size: 20px;
+  color: rgb(129, 129, 129);
+   font-family: serif;
+   letter-spacing: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main{
+    text-align: center;
+    margin-top:30px ;
+  }
+  .flex_row{
+    /* justify-content: center; */
+    display: flex;
+    padding-top: 20px;
+  }
+  
+/* .container{
+    background-color: red;
+    width: 500px;
+    overflow: auto;
+
+
+} */
+/* .thumbnail{
+  padding-left: 20px;
+} */
+.clicked{
+  border: 2px solid green;
+  border-radius: 5px;
+}

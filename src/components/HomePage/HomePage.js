@@ -28,9 +28,7 @@ function HomePage() {
 
     return ( 
         <div>
-            <div className={styles.container}>
-                    <div className={styles.heading}><p>Home/</p></div>
-                <div className={styles.wrapper}>
+            <div className={styles.wrapper}>
                     <div className={styles.containerLeft}>
                         <div className='row'>
                             <div><input type='search' placeholder='search'/></div>
@@ -415,10 +413,9 @@ function HomePage() {
                         </div>
                         </div>
                     </div>
-                </div>
-            <footer className={styles.footer}>C 2023<label> Dremy store</label>All rights reserved</footer>
-            </div>
+             </div>
         </div>
+       
      );
 }
 
