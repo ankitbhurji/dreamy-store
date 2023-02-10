@@ -2,6 +2,8 @@ import { useState } from "react";
 import HomePage from "../components/HomePage/HomePage";
 import Product from "../components/Product/Product";
 import styles from './Home.module.css'
+import copyright from '../images/copyright.svg'
+
 
 function Home() {   
     const [products, setProducts] = useState([{}])
@@ -36,7 +38,7 @@ function Home() {
                     ('')
                 }
                 
-            <footer className={styles.footer}>C 2023<label> Dremy store</label>All rights reserved</footer>
+            <footer className={styles.footer}><img src={copyright} /> 2023  <label> Dremy store </label> All rights reserved</footer>
             </div>
         </div>
         // <div>

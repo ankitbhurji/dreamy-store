@@ -7,7 +7,7 @@
     padding: 50px;
     padding-left: 120px;
     padding-right: 120px;
-    height: 100vh;
+    height: 96vh;
     /* background-color: green; */
 }
 .heading{
@@ -38,6 +38,7 @@
     position: sticky;
     /* position: fixed; */
     /* background-color: cyan; */
+    
 }
 input[type='search']{
     width: 100%;
@@ -47,6 +48,25 @@ input[type='search']{
     background-color: rgb(237, 237, 237);
     padding: 6px;
     padding-left: 8px;
+}
+.list{
+    position: absolute;
+    height: auto;
+    margin-top: 40px;
+    list-style-type: none;
+    background-color: white;
+    width: 86%;
+    margin-left: 12px;
+}
+.list1{
+    margin-top: 4px;
+    font-size: 16px;
+    color: rgb(41, 41, 167);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    font-weight: bold;
+    cursor: pointer;
 }
 .category{
     cursor: pointer;
@@ -62,6 +82,7 @@ input[type='search']{
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing:1px;
     font-weight: bold;
+    cursor: pointer;
 }
 .categoryList{
     /* color: red; */
@@ -70,6 +91,15 @@ input[type='search']{
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing:1px;
     font-weight: bold;
+}
+.categoryListActive{
+   /* color: red; */
+   /* color: white; */
+   font-size: 14px;
+   padding-left: 5px;
+   letter-spacing:1px;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #ad2e50b1;
 }
 .label{
     font-weight: bold;
@@ -103,6 +133,7 @@ input[type='search']{
     letter-spacing:1px;
     font-weight: bold;
 }
+
 /* .all{
     text-decoration: underline rgb(117, 29, 29) 1px;
 } */
@@ -119,10 +150,15 @@ input[type='search']{
     border-radius: 50%;
     margin: 2px;
     cursor: pointer;
+    border: 1px solid #ad2e50b1;
     /* line-break: auto; */
 }
 .colorActive{
-    border: 1px solid black;
+    border: 1px solid #ad2e50b1;
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
 }
 .colorsAll{
     color: rgb(94, 92, 92);
@@ -148,6 +184,10 @@ input[type='checkbox']{
     border-radius: 5px;
     letter-spacing: -1px;
     font-family: 'Courier New', Courier, monospace;
+    transition: 0.4s;
+}
+.clearButton:hover{
+    background-color: #530b1eb1;
 }
 
                 /* container right */
@@ -164,31 +204,53 @@ input[type='checkbox']{
     position: sticky;
 }
 .productsCount{
+    margin-top: 2px;
     margin-left: 1.5rem;
+    color: rgb(94, 92, 92);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    font-weight: bold;
 }
 .Hrline{
     height: 1px ;
-    margin-top: 1rem;
-    width: 28rem;
-    margin-left: 2rem;
+    margin-top: 0.8rem;
+    width: 24rem;
+    margin-left: 1.5rem;
     background-color: rgb(129, 126, 123);
 }
 .short{
     margin-left: 2rem;
+    margin-top: 2px;
+    margin-left: 1.5rem;
+    color: rgb(94, 92, 92);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    font-weight: bold;
 }
 .shortSelect{
     width: 100%;
     background-color: none;
     border: none;
-    margin-top: 0px;
-    margin-left: 1rem;
+    /* margin-top: 0px; */
+    /* margin-left: 1rem; */
     outline: none;
-    border: none;
-    font-weight: 500;
+    /* border: none; */
+    /* font-weight: 500; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+
+    margin-top: 2px;
+    margin-left: 1.5rem;
+    color: rgb(94, 92, 92);
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    letter-spacing:1px;
+    font-weight: bold;
 }
 .cardContainer{
     /* background-color: cyan; */
+    margin-top: 5px;
     /* width: 90%; */
     height: 100%;
     overflow-y: scroll ;
