@@ -7,6 +7,7 @@
   /* outline: dashed 1px black; */
   /* Setup */
   position: relative;
+  position: fixed;
 }
 
 .child {
@@ -18,6 +19,7 @@
   top: 50%;
   left: 43%;
   transform: translate(-50%, -50%);
+  margin-top: 55px;
 }
 .buttonBack{
   border: none;
