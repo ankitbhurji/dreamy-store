@@ -216,6 +216,13 @@ function HomePage(props) {
                             </div>
                         </div>
                         <div className={styles.cardContainer}>
+                            {productCount==0?(<div className='row'>
+                                <div >
+                                    <div className={styles.pageNotFound}>
+                                        <h1 className={styles.test}>product not found!</h1>
+                                    </div>
+                                </div>
+                            </div>):('')}
                         <div className='row'>
                             {
                                 products.map((product)=>{
