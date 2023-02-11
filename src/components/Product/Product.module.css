@@ -34,9 +34,14 @@
   padding-right: 8px;
   font-family: Monospace;
   margin-bottom: 25px;
+  transition: 0.2s;
+}
+.buttonBack:hover{
+  background-color: rgb(33, 90, 33);
+  padding-left: 6px;
 }
 .mainImage{
-  padding: 10 px;
+  padding: 10px;
 }
 .mainImage img{
   /* padding: 10px; */
@@ -47,14 +52,19 @@
   /* background-color: green; */
   width: 12rem;
   margin-top: 10px;
+  padding-left: 8px;
 }
 .thumbnail img{
   /* padding-left: 14px; */
   margin-right: 5px;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.1s;
 }
-
+.clicked{
+  border: 2px solid green;
+  padding: 2px;
+}
 .detailsContainer{
   padding-left: 50px;
 }
@@ -149,7 +159,4 @@ color: rgb(6, 79, 6);
 /* .thumbnail{
   padding-left: 20px;
 } */
-.clicked{
-  border: 2px solid green;
-  border-radius: 5px;
-}
+

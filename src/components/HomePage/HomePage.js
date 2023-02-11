@@ -178,7 +178,7 @@ function HomePage(props) {
                         <div className='row mt-3'>
                             <label className={styles.label}>Price</label>
                             <label className={styles.companyList}>${priceRange}</label>
-                            <div><input onChange={(e)=>{changePrice(e.target.value)}} value={priceRange} type='range' min="1" max="500"  step="2"/></div>
+                            <div><input onChange={(e)=>{changePrice(e.target.value)}} className={styles.range} value={priceRange} type='range' min="1" max="500"  step="2"/></div>
                         </div>
                         <div className='row mt-3'>
                             <div className='d-flex '>
@@ -195,8 +195,8 @@ function HomePage(props) {
                         <div >
                             <div className='row pb-2'>
                                 <div className='d-flex'>
-                                    <div onClick={()=>{setView({...view, isGridView:true, isListView:false})}}><img src={view.isGridView? gridActive:grid } /></div>
-                                    <div className='ms-2' onClick={()=>{setView({...view, isListView:true, isGridView:false})}}><img src={view.isListView? listActive:list } /></div>
+                                    <div onClick={()=>{setView({...view, isGridView:true, isListView:false})}} className={view.isGridView?(`${styles.gridIcon} ${styles.gridIconActive}`):(`${styles.gridIcon}`) }><img src={view.isGridView? gridActive:grid } /></div>
+                                    <div  onClick={()=>{setView({...view, isListView:true, isGridView:false})}} className={view.isListView?(`${styles.listIcon} ${styles.listIconActive}`):(`${styles.listIcon}`)}><img src={view.isListView? listActive:list } /></div>
                                     <div className={styles.productsCount}>{productCount} product found</div>
                                     <div className={styles.Hrline}></div>
                                     <div className={styles.short}>
