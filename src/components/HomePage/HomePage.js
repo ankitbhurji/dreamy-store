@@ -36,7 +36,7 @@ function HomePage(props) {
     const [productName, setProductName] = useState([{}])
     const [colorActive, setColorActive] = useState(false)
     // console.log(filters)
-    // console.log(productName)
+    // console.log(priceRange)
 
     async function getCategories(){
         const getCategories  = await getCategoriesApi()
@@ -216,42 +216,51 @@ function HomePage(props) {
                             </div>
                         </div>
                         <div className={styles.cardContainer}>
-                            {productCount==0?(<div className='row'>
+                            {
+                            !productCount?(
+                            <div className='row'>
                                 <div >
                                     <div className={styles.pageNotFound}>
                                         <h1 className={styles.test}>product not found!</h1>
                                     </div>
                                 </div>
-                            </div>):('')}
-                        <div className='row'>
-                            {
-                                products.map((product)=>{
-                                   return(
-                                    view.isGridView?
-                                    <div className='col-4 mt-4'>
-                                        <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/></div>
-                                        <div className='d-flex justify-content-between'>
-                                            <p className={styles.gridName}>{product.name}</p>
-                                            <p className={styles.gridPrice}>${product.price}</p>
-                                        </div>
-                                    </div>
-                                    :
-                                    <div className='row'>
-                                    <div className='col-4 mt-4' onClick={()=>{clickImage(product)}}>
-                                    <div className={styles.card}><img src={product.image} height="160" width="292"/></div></div>
-                                    <div className='col-8'>
-                                        <div className={styles.cardDetails}>
-                                            <p className={styles.cardName}>{product.name}</p>
-                                            <p className={styles.cardPrice}>${product.price}</p>
-                                            <p className={styles.cardDiscription} >{product.discription}</p>
-                                            <button className={styles.detailsButton} onClick={()=>{clickImage(product)}}>DETAILS</button>
-                                        </div> 
-                                    </div>
-                                    </div>
-                                   )
-                                })
+                            </div>
+                            )
+                            :
+                            ('')
                             }
-                        </div>
+                            <div className='row'>
+                                {
+                                    products.map((product)=>{
+                                    return(
+                                        view.isGridView && !productCount==0?
+                                        <div className='col-4 mt-4'>
+                                            <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/></div>
+                                            <div className='d-flex justify-content-between'>
+                                                <p className={styles.gridName}>{product.name}</p>
+                                                <p className={styles.gridPrice}>${product.price}</p>
+                                            </div>
+                                        </div>
+                                        :
+                                        view.isListView && !productCount==0?
+                                        <div className='row'>
+                                        <div className='col-4 mt-4' onClick={()=>{clickImage(product)}}>
+                                        <div className={styles.card}><img src={product.image} height="160" width="292"/></div></div>
+                                        <div className='col-8'>
+                                            <div className={styles.cardDetails}>
+                                                <p className={styles.cardName}>{product.name}</p>
+                                                <p className={styles.cardPrice}>${product.price}</p>
+                                                <p className={styles.cardDiscription} >{product.discription}</p>
+                                                <button className={styles.detailsButton} onClick={()=>{clickImage(product)}}>DETAILS</button>
+                                            </div> 
+                                        </div>
+                                        </div>
+                                        :
+                                       ('')
+                                    )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
              </div>
