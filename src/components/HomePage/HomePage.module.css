@@ -155,6 +155,7 @@ input[type='search']{
     cursor: pointer;
     border: 1px solid #ad2e50b1;
     /* line-break: auto; */
+    transition: 0.1s;
 }
 .colorActive{
     border: 1px solid #ad2e50b1;

@@ -50,7 +50,7 @@ function Product(props) {
     // console.log(thumbnailImage)
 
     useEffect(()=>{
-        handleRating()
+        handleRating() 
     },[])
 
     // async function clickme(){

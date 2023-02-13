@@ -8,6 +8,7 @@
   /* Setup */
   position: relative;
   position: fixed;
+  animation: slide-in 1000ms;
 }
 
 .child {
@@ -41,18 +42,38 @@
   padding-left: 6px;
 }
 .mainImage{
-  padding: 10px;
+  /* padding: 10px; */
+  animation: slide-in 1000ms;  
 }
+
 .mainImage img{
   /* padding: 10px; */
   border-radius: 5px;
+  animation: 12s autoplay3  ease-in-out;
+  
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 .thumbnail{
   display: flex;
   /* background-color: green; */
   width: 12rem;
   margin-top: 10px;
-  padding-left: 8px;
 }
 .thumbnail img{
   /* padding-left: 14px; */

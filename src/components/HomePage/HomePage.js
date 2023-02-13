@@ -1,5 +1,5 @@
 import styles from './HomePage.module.css';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import grid from '../../images/grid.svg'
 import gridActive from '../../images/gridActive.svg'
@@ -61,6 +61,7 @@ function HomePage(props) {
         if(!(filters.search=='')){
             const searchProduct = await searchApi(filters)
             setProducts(searchProduct.data)
+            setProudctCount(searchProduct.data.length)
             // setProductName(searchProduct.data)
         }
     }
@@ -89,18 +90,25 @@ function HomePage(props) {
             setFilters({...filters, company:event})
         }
     }
-   
-    
+
     
     useEffect(()=>{
         // getCategories()
         // getCompanies()
         // getColors()
-        getData()
+        // getData()
+
         if(filters.search==''){
+            getData()
             getProduct()
         }
-        searchChange()
+        if(!filters.search==''){
+            let timer = setTimeout(() => {
+                searchChange()
+            }, 1000);
+            return () =>{clearTimeout(timer)}
+        }
+       
     }, [filters])
 
     return ( 
