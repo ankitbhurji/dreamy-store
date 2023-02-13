@@ -91,15 +91,13 @@ function HomePage(props) {
         }
     }
 
+    useEffect(()=>{
+        getData()
+    }, [])
     
     useEffect(()=>{
-        // getCategories()
-        // getCompanies()
-        // getColors()
-        // getData()
-
+        
         if(filters.search==''){
-            getData()
             getProduct()
         }
         if(!filters.search==''){
@@ -155,7 +153,7 @@ function HomePage(props) {
 
                                 <label className={styles.label}>Company</label><br/>
                                 {/* <select className={`${styles.selectCompany} ${styles.companyList}`} onChange={(e)=>{setFilters({...filters, company:e.target.value})}}> */}
-                                <select className={styles.selectCompany} onChange={(e)=>{companySelect(e.target.value)}}>
+                                <select className={styles.selectCompany} value={filters.company} onChange={(e)=>{companySelect(e.target.value)}}>
                                 <option className={styles.companyList}>all</option>
                                     { 
                                         companies.map((values)=>{
