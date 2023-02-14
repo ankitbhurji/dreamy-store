@@ -11,6 +11,8 @@ import getCompaniesApi from '../../api/getCompaniesApi';
 import getColorsApi from '../../api/getColorsApi';
 import getProductApi from '../../api/getProductApi';
 import searchApi from '../../api/searchApi';
+import { debounce, range } from 'lodash';
+const _ = require('lodash');
 
 function HomePage(props) {
     const [selected, setSelected] = useState([]);
@@ -35,8 +37,7 @@ function HomePage(props) {
     })
     const [productName, setProductName] = useState([{}])
     const [colorActive, setColorActive] = useState(false)
-    // console.log(filters)
-    // console.log(priceRange)
+
 
     async function getCategories(){
         const getCategories  = await getCategoriesApi()
@@ -65,10 +66,9 @@ function HomePage(props) {
             // setProductName(searchProduct.data)
         }
     }
-    function changePrice(price){
-        setPriceRange(price)
-        setFilters({...filters, price:price})
-    }
+    
+    const changePriceRange = debounce((e)=>{setFilters({...filters, price:e.target.value})}, 1000)
+
     function clickImage(product){
         props.WindowKey({isProductKey:true, isHomePageKey:false})   
         props.products(product)
@@ -90,6 +90,7 @@ function HomePage(props) {
             setFilters({...filters, company:event})
         }
     }
+   
 
     useEffect(()=>{
         getData()
@@ -184,7 +185,8 @@ function HomePage(props) {
                         <div className='row mt-3'>
                             <label className={styles.label}>Price</label>
                             <label className={styles.companyList}>${priceRange}</label>
-                            <div><input onChange={(e)=>{changePrice(e.target.value)}} className={styles.range} value={priceRange} type='range' min="1" max="500"  step="2"/></div>
+                            {/* <div><input onChange={(e)=>{changePrice(e.target.value)}} className={styles.range} value={priceRange} type='range' min="1" max="500"  step="2"/></div> */}
+                            <div><input onChange={(e)=>{setPriceRange(e.target.value)}} onClick={changePriceRange} value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div>
                         </div>
                         <div className='row mt-3'>
                             <div className='d-flex '>
@@ -231,8 +233,7 @@ function HomePage(props) {
                                     </div>
                                 </div>
                             </div>
-                            )
-                            :
+                            ):
                             ('')
                             }
                             <div className='row'>
