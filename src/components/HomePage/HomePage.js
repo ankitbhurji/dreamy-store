@@ -15,7 +15,6 @@ import { debounce, range } from 'lodash';
 const _ = require('lodash');
 
 function HomePage(props) {
-    const [selected, setSelected] = useState([]);
     const [view, setView] = useState({
         isListView:false,
         isGridView:true
@@ -36,7 +35,6 @@ function HomePage(props) {
         search:''
     })
     const [productName, setProductName] = useState([{}])
-    const [colorActive, setColorActive] = useState(false)
 
 
     async function getCategories(){
@@ -67,14 +65,22 @@ function HomePage(props) {
         }
     }
     
-    const changePriceRange = debounce((e)=>{setFilters({...filters, price:e.target.value})}, 1000)
+    // const changePriceRange = debounce((e)=>{setFilters({...filters, price:e.target.value})}, 100)
+
+    function selectPrice(price){
+        setPriceRange(price)
+        setFilters({...filters, price:price})
+    }
+    console.log(filters.price)
 
     function clickImage(product){
         props.WindowKey({isProductKey:true, isHomePageKey:false})   
         props.products(product)
     }
     function clearButton(){
-        setFilters({...filters, category:'', company:'', color:'', price:'', freeshipping:false})
+        if(filters.category || filters.company || filters.color || filters.price || filters.freeshipping){
+            setFilters({...filters, category:'', company:'', color:'', price:'', freeshipping:false})
+        }
         setPriceRange(500)
     }
     function getData(){
@@ -99,7 +105,13 @@ function HomePage(props) {
     useEffect(()=>{
         
         if(filters.search==''){
-            getProduct()
+            if(!filters.price==''){
+                let timer1 = setTimeout(() => {
+                    getProduct()
+                }, 500);
+                return () =>{clearTimeout(timer1)}
+            }
+            getProduct()    
         }
         if(!filters.search==''){
             let timer = setTimeout(() => {
@@ -185,8 +197,8 @@ function HomePage(props) {
                         <div className='row mt-3'>
                             <label className={styles.label}>Price</label>
                             <label className={styles.companyList}>${priceRange}</label>
-                            {/* <div><input onChange={(e)=>{changePrice(e.target.value)}} className={styles.range} value={priceRange} type='range' min="1" max="500"  step="2"/></div> */}
-                            <div><input onChange={(e)=>{setPriceRange(e.target.value)}} onClick={changePriceRange} value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div>
+                            {/* <div><input onChange={(e)=>{setPriceRange(e.target.value)}} onClick={changePriceRange}  value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div> */}
+                            <div><input onChange={(e)=>{selectPrice(e.target.value)}}  value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div>
                         </div>
                         <div className='row mt-3'>
                             <div className='d-flex '>
