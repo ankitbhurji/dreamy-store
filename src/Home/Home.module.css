@@ -15,16 +15,20 @@
     color: #0f4f0d;
     font-size: 25px;
     margin-top: 12px;
-    /* margin-left: 100px; */
-    /* padding: 12px; */
-    /* padding-left: 20px; */
     font-weight: 800;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.heading a{
+    color: #4b8948;
+    /* text-decoration: none; */
+}
+a:hover{
+    color: #0f4f0d;
 }
 .BroadCrumps{
     display: flex;
     padding-left: 120px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .footer{
     text-align: center;

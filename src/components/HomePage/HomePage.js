@@ -5,7 +5,6 @@ import grid from '../../images/grid.svg'
 import gridActive from '../../images/gridActive.svg'
 import list from '../../images/list.svg'
 import listActive from '../../images/listActive.svg'
-import axios from 'axios'
 import getCategoriesApi from '../../api/getCategoriesApi';
 import getCompaniesApi from '../../api/getCompaniesApi';
 import getColorsApi from '../../api/getColorsApi';
@@ -56,7 +55,6 @@ function HomePage(props) {
         setProudctCount(getProduct.data.length)
     }
     async function searchChange(){
-        // setFilters({...filters, search:event})
         if(!(filters.search=='')){
             const searchProduct = await searchApi(filters)
             setProducts(searchProduct.data)
@@ -125,7 +123,6 @@ function HomePage(props) {
             <div className={styles.wrapper}>
                     <div className={styles.containerLeft}>
                         <div className='row'>
-                            {/* <div><input onChange={(e)=>{searchChange(e.target.value)}} type='search' placeholder='search'/></div> */}
                             <div><input onChange={(e)=>{setFilters({...filters, search:e.target.value})}} type='search' placeholder='search'/></div>
                             {/* <ul className={styles.list}>
                                 {productName.map((values)=>{
@@ -154,6 +151,7 @@ function HomePage(props) {
                         </div>
                         <div className='row mt-3'>
                             <div style={styles.selecteCompany}>
+
                                 {/* <pre>{JSON.stringify(selected)}</pre> */}
                                 {/* <MultiSelect
                                     options={options}
@@ -163,7 +161,6 @@ function HomePage(props) {
                                 /> */}
 
                                 <label className={styles.label}>Company</label><br/>
-                                {/* <select className={`${styles.selectCompany} ${styles.companyList}`} onChange={(e)=>{setFilters({...filters, company:e.target.value})}}> */}
                                 <select className={styles.selectCompany} value={filters.company} onChange={(e)=>{companySelect(e.target.value)}}>
                                 <option className={styles.companyList}>all</option>
                                     { 
@@ -181,7 +178,6 @@ function HomePage(props) {
                             <div className={styles.colorSelect}>
                                 <div className={styles.colorArea}>
                                     <div className='me-2'><div onClick={()=>{setFilters({...filters, color:''})}} className={styles.all}>all</div></div>
-                                    {/* <div className={styles.colors} style={{backgroundColor: 'blue'}}></div> */}
                                     {
                                         colors.map((values)=>{
                                             return(
@@ -195,7 +191,6 @@ function HomePage(props) {
                         <div className='row mt-3'>
                             <label className={styles.label}>Price</label>
                             <label className={styles.companyList}>${priceRange}</label>
-                            {/* <div><input onChange={(e)=>{setPriceRange(e.target.value)}} onClick={changePriceRange}  value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div> */}
                             <div><input onChange={(e)=>{selectPrice(e.target.value)}}  value={priceRange} className={styles.range} type='range' min="1" max="500"  step="2"/></div>
                         </div>
                         <div className='row mt-3'>

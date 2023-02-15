@@ -11,7 +11,6 @@ function Home() {
         isProductKey:false,
         isHomePageKey:true
     })
-    // console.log(products)
     function clickBroadCrumps(){
         setWindowKey({...WindowKey, isHomePageKey:true, isProductKey:false})
     }
@@ -19,17 +18,13 @@ function Home() {
     return ( 
          <div>
             <div className={styles.container}>
-
-                {/* <div className={styles.heading}><p onClick={clickBroadCrumps}>Home/products/{WindowKey.isProductKey?(products.name):('')}</p></div> */}
                 <div className={styles.heading}>
                     <div className={styles.BroadCrumps}>
-                    <p onClick={clickBroadCrumps}>Home/products</p>
+                    <p onClick={clickBroadCrumps}>Home/<a href="">Products</a></p>
                     <p>{WindowKey.isProductKey?("/"+products.name):('')}</p>
                     </div>
                 </div>
 
-                {/* <HomePage WindowKey={setWindowKey} /> */}
-                {/* <Product products={setProducts}/> */}
                 {
                     WindowKey.isHomePageKey?(<HomePage WindowKey={setWindowKey} products={setProducts} />)
                     :
@@ -38,13 +33,9 @@ function Home() {
                     ('')
                 }
                 
-            <footer className={styles.footer}><img src={copyright} /> 2023  <label> Dremy store </label> All rights reserved</footer>
+                <footer className={styles.footer}><img src={copyright} /> 2023  <label> Dremy store </label> All rights reserved</footer>
             </div>
         </div>
-        // <div>
-        //     <HomePage />
-        //     <Product/>
-        // </div>
      );
 }
 

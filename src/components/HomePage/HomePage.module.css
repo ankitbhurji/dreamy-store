@@ -1,5 +1,4 @@
 .container{
-    /* padding: 20px; */
     position: fixed;
 }
 .wrapper{
@@ -8,7 +7,6 @@
     padding-left: 120px;
     padding-right: 120px;
     height: 96vh;
-    /* background-color: green; */
 }
 .heading{
     background-color: #a4d9a3;
