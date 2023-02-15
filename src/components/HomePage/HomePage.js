@@ -71,8 +71,6 @@ function HomePage(props) {
         setPriceRange(price)
         setFilters({...filters, price:price})
     }
-    console.log(filters.price)
-
     function clickImage(product){
         props.WindowKey({isProductKey:true, isHomePageKey:false})   
         props.products(product)
