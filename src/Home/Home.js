@@ -17,14 +17,13 @@ function Home() {
 
     return ( 
          <div>
-            <div className={styles.container}>
-                <div className={styles.heading}>
-                    <div className={styles.BroadCrumps}>
-                    <p onClick={clickBroadCrumps}>Home/<a href="">Products</a></p>
-                    <p>{WindowKey.isProductKey?("/"+products.name):('')}</p>
-                    </div>
+            <div className={styles.header}>
+                <div className={styles.BroadCrumps}>
+                    <p onClick={clickBroadCrumps}>Home/ <a className={styles.link}>Products</a></p>
+                    <p>{WindowKey.isProductKey?("/ "+products.name):('')}</p>
                 </div>
-
+            </div>
+            <div className={styles.container}>
                 {
                     WindowKey.isHomePageKey?(<HomePage WindowKey={setWindowKey} products={setProducts} />)
                     :

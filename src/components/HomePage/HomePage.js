@@ -49,7 +49,7 @@ function HomePage(props) {
         const getColors = await getColorsApi()
         setColors(getColors.data)
     }
-    async function getProduct(clr){
+    async function getProduct(){
         const getProduct = await getProductApi(filters)
         setProducts(getProduct.data)
         setProudctCount(getProduct.data.length)
@@ -75,7 +75,14 @@ function HomePage(props) {
     }
     function clearButton(){
         if(filters.category || filters.company || filters.color || filters.price || filters.freeshipping){
-            setFilters({...filters, category:'', company:'', color:'', price:'', freeshipping:false})
+            setFilters({
+                ...filters, 
+                category:'', 
+                company:'', 
+                color:'', 
+                price:'', 
+                freeshipping:false
+            })
         }
         setPriceRange(500)
     }
@@ -87,9 +94,15 @@ function HomePage(props) {
     }
     function companySelect(event){
         if(event=='all'){
-            setFilters({...filters, company:''})
+            setFilters({
+                ...filters, 
+                company:''
+            })
         }else{
-            setFilters({...filters, company:event})
+            setFilters({
+                ...filters, 
+                company:event
+            })
         }
     }
    
@@ -246,13 +259,50 @@ function HomePage(props) {
                                     products.map((product)=>{
                                     return(
                                         view.isGridView && !productCount==0?
-                                        <div className='col-4 mt-4'>
-                                            <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/></div>
-                                            <div className='d-flex justify-content-between'>
-                                                <p className={styles.gridName}>{product.name}</p>
-                                                <p className={styles.gridPrice}>${product.price}</p>
+                                        // <div className='col-4 mt-4'>
+                                        //     <div className='row'>
+                                        //         <div className='col-12'>
+                                        //             <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/>
+                                        //             </div>
+                                        //         </div>
+                                        //         <div className='col-12 bg-primary'>
+                                        //             <div className='d-flex justify-content-between'>
+                                        //                 <p className={styles.gridName}>{product.name}</p>
+                                        //                 <p className={styles.gridPrice}>${product.price}</p>
+                                        //             </div>
+                                        //         </div>
+                                        //     </div>
+                                        // </div>
+                                        
+                                       <div className='col-4 mt-4'>
+                                         <div className={styles.demo}>
+                                            <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/>
                                             </div>
-                                        </div>
+                                            <div className={styles.demo1}>
+                                            <p className={styles.gridName}>{product.name}</p>
+                                            <p className={styles.gridPrice}>${product.price}</p>
+                                            </div>
+                                         </div>
+                                       </div>
+
+                                        
+                                        
+                                        // <div className='col-4'>
+                                        //     <div className='row'>
+                                        //         <div className={styles.card}  onClick={()=>{clickImage(product)}}><img src={product.image} height="160" width="292"/>
+                                        //         </div>
+                                        //     </div>
+                                        //     <div className='row  ms-1'>
+                                        //         <div className={styles.one}>
+                                        //             <div className='d-flex justify-content-between'>
+                                        //                 <div className='col-6 bg-primary'>name</div>
+                                        //                 <div className='col-6 bg-primary'>
+                                        //                     <p className={styles.one}>price</p>
+                                        //                 </div>
+                                        //             </div>
+                                        //         </div>
+                                        //     </div>
+                                        // </div>
                                         :
                                         view.isListView && !productCount==0?
                                         <div className='row'>

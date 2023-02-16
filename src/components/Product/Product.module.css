@@ -3,11 +3,11 @@
   font-size: 24px;
   margin: 25px;
   width: 90%;
-  height: 70vh;
+  height: 60vh;
   /* outline: dashed 1px black; */
   /* Setup */
   position: relative;
-  position: fixed;
+  /* position: fixed; */
   animation: slide-in 1000ms;
 }
 

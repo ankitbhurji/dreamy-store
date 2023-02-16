@@ -1,30 +1,30 @@
 .container{
     /* padding: 20px; */
-    position: fixed;
+    /* position: fixed; */
 }
 
 .heading{
-    background-color: #a4d9a3;
+    /* background-color: #a4d9a3;
     width: 100%;
     height: 4rem;
-    position: fixed;
+    position: fixed; */
     /* display: flex; */
     
 }
 .heading p {
-    color: #0f4f0d;
+    /* color: #0f4f0d;
     font-size: 25px;
     margin-top: 12px;
-    font-weight: 800;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800; */
+    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 .heading a{
-    color: #4b8948;
+    /* color: #4b8948; */
     /* text-decoration: none; */
 }
-a:hover{
+/* a:hover{
     color: #0f4f0d;
-}
+} */
 .BroadCrumps{
     display: flex;
     padding-left: 120px;
@@ -50,4 +50,38 @@ a:hover{
 .footer label{
     color: #0d9d0b;
 
+}
+
+
+
+
+
+
+.header{
+    height: 80px;
+    background-color:  #a4d9a3;
+    /* margin-left: 30px; */
+    font-size: 25px;
+    /* position: fixed;
+    width: 100%; */
+}
+.header p{
+    padding-top: 22px;
+    /* margin-left: 30px; */
+    font-weight: bold;
+    cursor: pointer;
+    /* font-size: 20px; */
+    color: #4b8948;
+}
+.BroadCrumps a{
+    /* cursor: pointer; */
+    /* position: relative; */
+    /* color: red; */
+}
+.link{
+    color: #4b8948;
+    text-decoration: none;
+}
+.link:hover{
+    color: #3d5b3b;
 }
