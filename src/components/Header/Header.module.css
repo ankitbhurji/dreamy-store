@@ -1,0 +1,25 @@
+.header{
+    height: 80px;
+    width: 215vh;
+    /* position: fixed; */
+    background-color: rgb(116, 212, 116);
+    display: flex;
+    /* font-size: 25px; */
+    display: inline-block;
+}
+.path{
+    display: flex;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 68px;
+    margin-top: 14px;
+    color: rgb(3, 79, 3);
+}
+.product{
+    cursor: pointer;
+    transition: 0.2s;
+    color: rgb(3, 79, 3);
+}
+.product:hover{
+    color: rgb(56, 133, 62);
+}

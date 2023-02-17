@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-image-gallery": "^1.2.11",
     "react-multi-select-component": "^4.3.4",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-simple-image-slider": "^2.4.1",
     "react-simple-star-rating": "^5.1.7",
