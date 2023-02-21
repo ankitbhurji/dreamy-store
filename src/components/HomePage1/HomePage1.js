@@ -231,7 +231,6 @@ function HomePage1() {
                         </div>
                     </div>
                     
-                   
                     <div className={styles.grid_container}>
 
                     {
@@ -239,7 +238,7 @@ function HomePage1() {
                             return(
                                 view.isGridView && !productCount==0?
                                 (
-                                    <div className={styles.grid}>
+                                    <div onClick={()=>{clickImage(product)}} className={styles.grid}>
                                         <img className={styles.grid_image} src={product.image} />
                                         <div className={styles.gird_details}>
                                             <p className={styles.grid_name}>{product.name}</p>
@@ -248,6 +247,7 @@ function HomePage1() {
                                     </div>
                                 )
                                 :
+                                view.isListView && !productCount==0?
                                 (
                                     <>
                                     <div className={styles.list}>
@@ -257,10 +257,12 @@ function HomePage1() {
                                     <p className={styles.list_name}>{product.name}</p>
                                         <p className={styles.list_price}>${product.price}</p>
                                         <p className={styles.list_detail}>{product.discription}</p>
-                                        <button className={styles.list_button}>Details</button> 
+                                        <button onClick={()=>{clickImage(product)}} className={styles.list_button}>Details</button> 
                                     </div>
                                     </>
                                 )
+                                :
+                                ('')
                             )
                         })
                     }

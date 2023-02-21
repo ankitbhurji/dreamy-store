@@ -1,0 +1,100 @@
+.container{
+    /* width: 100%; */
+    width: 1520px;
+    /* background-color: gray; */
+    padding: 30px 0 0 80px;
+    margin: 0 auto 0;
+}
+.back_button{
+    margin-bottom: 30px;
+    border: none;
+    background-color: green;
+    color: white;
+    letter-spacing: 1px;
+    padding: 2px 12px 2px 12px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.back_button:hover{
+    background-color: rgb(1, 35, 1);
+}
+.product_container{
+    display: grid;
+    grid-template-rows: 450px;
+    /* grid-template-columns: 350px 500px; */
+    grid-template-columns: 400px 600px;
+    grid-column-gap: 20px;
+    /* overflow: auto; */
+}
+.product_details{
+    /* background-color: bisque; */
+}
+p{
+    margin: 0px;
+    padding: 0px;
+}
+.product_name{
+    font-size:30px ;
+    letter-spacing: 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.prodcut_rating{
+    display: flex;
+}
+.product_reviews{
+    margin: 6px 0 0 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgb(117, 116, 116);
+}
+.product_price{
+    font-size: 26px;
+    color: rgb(19, 171, 90);
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.product_discription{
+    font-size: 18px;
+    font-family: 'Franklin', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
+    content: fit;
+    text-align:justify;
+    color: rgb(117, 116, 116);
+}
+.prodcut_status{
+    width: 300px;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+.prodcut_status_tag{
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: rgb(29, 31, 67);
+}
+.prodcut_status_tag_details{
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(117, 116, 116);
+}
+.product{
+    /* background-color: aqua; */
+}
+.product_image{
+    height: 100%;
+    width: 100%;
+}
+.thumnail_container{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: 50px;
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+.thumbnail{
+    background-color: blueviolet;
+}
