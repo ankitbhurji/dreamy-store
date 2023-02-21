@@ -157,7 +157,6 @@ function HomePage1() {
                         </div>
                         <label className={styles.label}>Category</label><br/>
                         <div className={styles.categories}>
-                            {/* <div>All</div> */}
                             <div onClick={()=>{setFilters({...filters, category:''})}}>All</div>
                             <div>
                                 {
@@ -168,14 +167,6 @@ function HomePage1() {
                                     })
                                 }
                             </div>
-                            {/* <div>cat-2</div>
-                            <div>cat-3</div>
-                            <div>cat-4</div>
-                            <div>cat-5</div>
-                            <div>cat-6</div>
-                            <div>cat-7</div>
-                            <div>cat-8</div>
-                            <div>cat-9</div> */}
                         </div>
                         <div className={styles.companies}>
                             <label className={styles.label}>Company</label><br/>
@@ -188,11 +179,6 @@ function HomePage1() {
                                         )
                                     })
                                 }
-                                
-                                {/* <option>c-2</option>
-                                <option>c-3</option>
-                                <option>c-4</option>
-                                <option>c-5</option> */}
                             </select>
                         </div>
                         <label className={styles.label}>Colors</label>
@@ -205,14 +191,10 @@ function HomePage1() {
                                     )
                                 })
                             }
-                            {/* <div className={styles.color}></div>
-                            <div className={styles.color}></div>
-                            <div className={styles.color}></div>
-                            <div className={styles.color}></div> */}
                         </div>
                         <div className={styles.range}>
                             <div className={styles.range_details}>
-                                <p className={styles.range_pricetage}>price</p>
+                                <label className={styles.label}>Price</label>
                                 <p className={styles.range_price}>${priceRange}</p>
                             </div>
                             <input onChange={(e)=>{selectPrice(e.target.value)}} value={priceRange} min="1" max="500" step="1" type='range'/>
@@ -237,6 +219,7 @@ function HomePage1() {
                             {view.isListView?<RiFileListFill fontSize="1.8em"/>:<RiFileListLine fontSize="1.8em"/>}
                             </div>
                         </div>
+                        <div className={styles.product_count}>{productCount} product found</div>
                         <div className={styles.line}></div>
                         <div>
                             <select onChange={(e)=>{setFilters({...filters, shortBy:e.target.value})}} className={styles.short_select}>
@@ -250,127 +233,39 @@ function HomePage1() {
                     
                    
                     <div className={styles.grid_container}>
-                        {
-                            products.map((product)=>{
-                                return(
-                                    view.isGridView && !productCount==0?
-                                    (
+
+                    {
+                        products.map((product)=>{
+                            return(
+                                view.isGridView && !productCount==0?
+                                (
                                     <div className={styles.grid}>
-                                        <img className={styles.grid_image} src={product.image} height="180" width="350"/>
+                                        <img className={styles.grid_image} src={product.image} />
                                         <div className={styles.gird_details}>
                                             <p className={styles.grid_name}>{product.name}</p>
                                             <p className={styles.grid_price}>${product.price}</p>
                                         </div>
                                     </div>
-                                    )
-                                    :
-                                    (
-                                        ''
-                                    )
                                 )
-                            })
-                        }
-                        {/* <div className={styles.grid}>
-                            <img className={styles.grid_image} src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                            <div className={styles.gird_details}>
-                                <p className={styles.grid_name}>name</p>
-                                <p className={styles.grid_price}>$300</p>
-                            </div>
-                        </div>
-                        <div className={styles.grid}>
-                            <img className={styles.grid_image} src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        </div>
-                        <div className={styles.grid}>
-                            <img className={styles.grid_image} src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        </div> */}
-                    </div>
-
-                    {
-                        products.map((product)=>{
-                            return(
-                                view.isListView && !productCount==0?
+                                :
                                 (
-                                <div className={styles.list_container}>
+                                    <>
+                                    <div className={styles.list}>
                                     <img className={styles.list_image}src={product.image}/>
+                                    </div>
                                     <div className={styles.list_info}>
-                                        <p className={styles.list_name}>{product.name}</p>
+                                    <p className={styles.list_name}>{product.name}</p>
                                         <p className={styles.list_price}>${product.price}</p>
                                         <p className={styles.list_detail}>{product.discription}</p>
-                                        <button className={styles.list_button} onClick={()=>{clickImage(product)}}>Details</button> 
+                                        <button className={styles.list_button}>Details</button> 
                                     </div>
-                                </div>
-                                    )
-                                    :
-                                    (
-                                        ''
-                                    )
+                                    </>
                                 )
-                            })
-                        }
+                            )
+                        })
+                    }
 
-                    {/* <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
                     </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://letsenhance.io/static/b8eda2f8914d307d52f725199fb0c5e6/62e7b/MainBefore.jpg"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div>
-                    <div className={styles.list_container}>
-                        <img className={styles.list_image}src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"/>
-                        <div className={styles.list_info}>
-                            <p className={styles.list_name}>name</p>
-                            <p className={styles.list_price}>$300</p>
-                            <p className={styles.list_detail}>using using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-                            <button className={styles.list_button}>Details</button> 
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
