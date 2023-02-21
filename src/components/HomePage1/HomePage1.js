@@ -3,14 +3,8 @@ import Header1 from '../Header1/Header1';
 import { TfiLayoutGrid3Alt, TfiLayoutGrid3 } from 'react-icons/tfi';
 import { RiFileListFill, RiFileListLine } from 'react-icons/ri';
 
-
-import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
-import grid from '../../images/grid.svg'
-import gridActive from '../../images/gridActive.svg'
-import list from '../../images/list.svg'
-import listActive from '../../images/listActive.svg'
 import getCategoriesApi from '../../api/getCategoriesApi';
 import getCompaniesApi from '../../api/getCompaniesApi';
 import getColorsApi from '../../api/getColorsApi';
@@ -162,7 +156,7 @@ function HomePage1() {
                                 {
                                     categories.map((values)=>{
                                         return(
-                                            <div onClick={()=>{setFilters({...filters, category:values.category})}}>{values.category}</div>
+                                            <div className={values.category==filters.category? (styles.categories_active):('')}  onClick={()=>{setFilters({...filters, category:values.category})}}>{values.category}</div>
                                         )
                                     })
                                 }
@@ -187,7 +181,7 @@ function HomePage1() {
                             {
                                 colors.map((values)=>{
                                     return(
-                                        <div onClick={()=>{setFilters({...filters, color:values.color})}} style={{backgroundColor: '#'+values.color}} className={styles.color}></div>
+                                        <div onClick={()=>{setFilters({...filters, color:values.color})}} style={{backgroundColor: '#'+values.color}} className={values.color==filters.color? (`${styles.color_active} ${styles.color}`):(styles.color)}></div>
                                     )
                                 })
                             }
@@ -195,7 +189,7 @@ function HomePage1() {
                         <div className={styles.range}>
                             <div className={styles.range_details}>
                                 <label className={styles.label}>Price</label>
-                                <p className={styles.range_price}>${priceRange}</p>
+                                <div className={styles.range_price}>${priceRange}</div>
                             </div>
                             <input onChange={(e)=>{selectPrice(e.target.value)}} value={priceRange} min="1" max="500" step="1" type='range'/>
                         </div>
@@ -254,9 +248,9 @@ function HomePage1() {
                                     <img className={styles.list_image}src={product.image}/>
                                     </div>
                                     <div className={styles.list_info}>
-                                    <p className={styles.list_name}>{product.name}</p>
-                                        <p className={styles.list_price}>${product.price}</p>
-                                        <p className={styles.list_detail}>{product.discription}</p>
+                                    <div className={styles.list_name}>{product.name}</div>
+                                        <div className={styles.list_price}>${product.price}</div>
+                                        <div className={styles.list_detail}>{product.discription}</div>
                                         <button onClick={()=>{clickImage(product)}} className={styles.list_button}>Details</button> 
                                     </div>
                                     </>

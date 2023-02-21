@@ -3,13 +3,11 @@ import styles from './Product1.module.css'
 
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-image-gallery/styles/css/image-gallery.css";
-import ImageGallery from 'react-image-gallery';
 import React, { useEffect, useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import getItemApi from "../../api/getItemApi";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import Header from "../Header/Header";
 
 function Product1() {
 
@@ -54,7 +52,7 @@ function Product1() {
 
     return ( 
         <div>
-            <Header1/>
+            <Header1 item = {item.name}/>
             <div className={styles.container}>
                 <button onClick={clickBack} className={styles.back_button}>BACK TO PRODUCT</button>
                 <div className={styles.product_container}>
@@ -100,21 +98,6 @@ function Product1() {
                                 )
                             })
                         }
-                        {/* <div className={styles.thumbnail}>
-                            <img className={styles.product_image} src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-                        </div>
-                        <div className={styles.thumbnail}>
-                            <img className={styles.product_image} src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-                        </div>
-                        <div className={styles.thumbnail}>
-                            <img className={styles.product_image} src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-                        </div>
-                        <div className={styles.thumbnail}>
-                            <img className={styles.product_image} src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-                        </div>
-                        <div className={styles.thumbnail}>
-                            <img className={styles.product_image} src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-                        </div> */}
                     </div> 
                 </div>
             </div>

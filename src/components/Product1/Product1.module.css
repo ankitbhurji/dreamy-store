@@ -96,5 +96,6 @@ p{
     margin-top: 10px;
 }
 .thumbnail{
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    cursor: pointer;
 }
