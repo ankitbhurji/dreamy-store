@@ -1,20 +1,21 @@
-import styles from './HomePage.module.css';
+import styles from './HomePage.module.css'
 import Header from '../Header/Header';
+import { TfiLayoutGrid3Alt, TfiLayoutGrid3 } from 'react-icons/tfi';
+import { RiFileListFill, RiFileListLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
-import grid from '../../images/grid.svg'
-import gridActive from '../../images/gridActive.svg'
-import list from '../../images/list.svg'
-import listActive from '../../images/listActive.svg'
 import getCategoriesApi from '../../api/getCategoriesApi';
 import getCompaniesApi from '../../api/getCompaniesApi';
 import getColorsApi from '../../api/getColorsApi';
 import getProductApi from '../../api/getProductApi';
 import searchApi from '../../api/searchApi';
-import { debounce, range } from 'lodash';
+import { debounce, range, values } from 'lodash';
 const _ = require('lodash');
 
+
+
 function HomePage() {
+
     const navigate = useNavigate();
 
     const [view, setView] = useState({
@@ -114,7 +115,6 @@ function HomePage() {
     }, [])
     
     useEffect(()=>{
-        
         if(filters.search==''){
             if(!filters.price==''){
                 let timer1 = setTimeout(() => {
@@ -133,12 +133,15 @@ function HomePage() {
        
     }, [filters])
 
+
+
     return ( 
         <div>
-            <Header/>
-            <div className='row'>
-                <div className='col-3'>
-                    <div className={styles.leftContainer}>
+            <Header />
+            <div className={styles.container}>
+                <div>
+                    <div className={styles.filter_container}>
+
                         <div className={styles.search}>
                             <input onChange={(e)=>{setFilters({
                                 ...filters, 
@@ -148,214 +151,186 @@ function HomePage() {
                                 placeholder='search'
                             />
                         </div>
-                        <div className={styles.category}>
-                            <label>Category</label>
-                            <div onClick={()=>{setFilters({
-                                ...filters, 
-                                category:''
-                                })}} 
-                                className={styles.all}>all
-                            </div>
+
+                        <label className={styles.label}>Category</label><br/>
+                        <div className={styles.categories}>
+                            <div onClick={()=>{setFilters({...filters, category:''})}}>All</div>
                             <div>
                                 {
                                     categories.map((values)=>{
-                                     return(
-                                        <div className={values.category==filters.category? 
-                                            (`${styles.categoryList} ${styles.categoryListActive}`)
-                                            :
-                                            (`${styles.categoryList}`)} 
-                                            onClick={()=>{setFilters({
-                                                ...filters, 
-                                                category:values.category
-                                            })}}
-                                        >
-                                            {values.category}
-                                        </div>
+                                        return(
+                                            <div className={values.category==filters.category? 
+                                                (styles.categories_active)
+                                                :
+                                                ('')}  
+                                                onClick={()=>{setFilters({
+                                                    ...filters, 
+                                                    category:values.category
+                                                })}}
+                                                >{values.category}
+                                            </div>
                                         )
                                     })
                                 }
                             </div>
                         </div>
-                        <div className={styles.company}>
-                            <label>Company</label><br/>
-                            <select className={styles.selectCompany} 
-                                value={filters.company} 
-                                onChange={(e)=>{companySelect(e.target.value)}}
+
+                        <div className={styles.companies}>
+                            <label className={styles.label}>Company</label><br/>
+                            <select className={styles.companies_select} 
+                                    onChange={(e)=>{companySelect(e.target.value)}} 
+                                    value={filters.company}
                             >
-                            <option className={styles.companyList}>all</option>
-                                { 
+                                <option>All</option>
+                                {
                                     companies.map((values)=>{
                                         return(
-                                            <option className={`${styles.companyList} ${styles.companyListActive}`} 
-                                            value={values.companyName}
-                                            >
-                                            {values.companyName}
-                                            </option>
-                                            )
-                                        })
-                                    } 
-                            </select>
-                        </div>
-                        <div >
-                            <label className={styles.colorLabel}>Color</label><br/>
-                            <div className={styles.color}>
-                                <div className='me-2'>
-                                    <div onClick={()=>{setFilters({
-                                        ...filters, 
-                                        color:''
-                                        })}} 
-                                        className={styles.all}
-                                        >all
-                                    </div>
-                                </div>
-                                {
-                                    colors.map((values)=>{
-                                        return(
-                                            <div onClick={()=>{setFilters({
-                                                ...filters, 
-                                                color:values.color
-                                                })}} 
-                                                className={ values.color==filters.color? 
-                                                (`${styles.colors}${styles.colorActive}`)
-                                                :
-                                                (`${styles.colors} `)}
-                                                value={values.color} 
-                                                style={{backgroundColor: '#'+values.color}}>
-                                             </div>
+                                            <option value={values.companyName}> {values.companyName} </option>
                                         )
                                     })
                                 }
+                            </select>
+                        </div>
+
+                        <label className={styles.label}>Colors</label>
+                        <div className={styles.colors}>
+                            <div onClick={()=>{setFilters({...filters, color:''})}}>All</div>
+                            {
+                                colors.map((values)=>{
+                                    return(
+                                        <div onClick={()=>{setFilters({
+                                                ...filters, 
+                                                color:values.color
+                                            })}} 
+                                            style={{backgroundColor: '#'+values.color}} 
+                                            className={values.color==filters.color? 
+                                            (`${styles.color_active} ${styles.color}`)
+                                            :
+                                            (styles.color)}>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+
+                        <div className={styles.range}>
+                            <div className={styles.range_details}>
+                                <label className={styles.label}>Price</label>
+                                <div className={styles.range_price}>${priceRange}</div>
                             </div>
+                            <input 
+                                onChange={(e)=>{selectPrice(e.target.value)}} 
+                                value={priceRange} 
+                                min="1" 
+                                max="500" 
+                                step="1" 
+                                type='range'
+                            />
                         </div>
-                        <div className={styles.price}>
-                            <label className={styles.priceLabel}>Price</label>
-                            <label className={styles.priceRange}>${priceRange}</label><br/>
-                            <input onChange={(e)=>{selectPrice(e.target.value)}} 
-                            value={priceRange} 
-                            className={styles.range} 
-                            type='range' 
-                            min="1" 
-                            max="500"  
-                            step="2"
-                        />  
-                        </div>
-                        <div className={styles.freeshipping}>
-                            <label>freeshipping</label>
-                            <div className='pt-1'>
-                                <input checked={filters.freeshipping} 
-                                    value={filters.freeshipping} 
-                                    onClick={()=>{setFilters({
+
+                        <div className={styles.shipping}>
+                            <label className={styles.label}>freeshipping</label>
+                            <input 
+                                checked={filters.freeshipping} 
+                                value={filters.freeshipping} 
+                                onClick={()=>{setFilters({
                                     ...filters, 
                                     freeshipping:!filters.freeshipping
-                                    })}} 
+                                    })}}  
                                     type='checkbox'
-                                />
-                            </div>
+                            />
                         </div>
-                        <div className='mt-3'>
-                            <button onClick={clearButton} className={styles.clearButton} >Clear Filters</button>
+
+                        <div className={styles.button_container}>
+                            <button onClick={clearButton} className={styles.button}>Clear Filters</button>
                         </div>
                     </div>
                 </div>
 
-                <div className='col-9'>
-                    <div className={styles.rightContainer}>
-                        <div className={styles.demo}>
-                            <div className={styles.demo1}>
-                                <div onClick={()=>{setView({
-                                    ...view, 
-                                    isGridView:true, 
-                                    isListView:false
-                                    })}} 
-                                    className={
-                                        view.isListView?
-                                        (`${styles.gridIcon} ${styles.gridIconActive}`)
-                                        :
-                                        (`${styles.gridIcon}`)
-                                         }>
-                                        <img src={view.isGridView? gridActive:grid } />
-                                </div>
-                                <div  onClick={()=>{setView({
-                                    ...view, 
-                                    isListView:true, 
-                                    isGridView:false
-                                    })}} 
-                                    className={view.isListView?
-                                    (`${styles.listIcon} ${styles.listIconActive}`)
-                                    :
-                                    (`${styles.listIcon}`)
-                                    }>
-                                    <img src={view.isListView? listActive:list } />
-                                </div>
-                                <div className={styles.productsCount}>{productCount} product found</div>
+                <div className={styles.product_container}>
+                    <div className={styles.topbar_container}>
+                        <div className={styles.grid_icon}>
+                            <div onClick={()=>{setView({
+                                ...view, 
+                                isGridView:true, 
+                                isListView:false
+                                })}}
+                                >
+                                {
+                                view.isGridView?<TfiLayoutGrid3Alt fontSize="1.5em"/>
+                                :
+                                <TfiLayoutGrid3 fontSize="1.5em"/>
+                                }
                             </div>
-                            <hr/>
-                            <div className={styles.demo2}>
-                            <p>Short By</p>
-                                <div>
-                                    <select onChange={(e)=>{setFilters({
-                                        ...filters, 
-                                        shortBy:e.target.value
-                                        })}} 
-                                        className={styles.shortSelect}
-                                        >
-                                        <option>Price(lowest)</option>
-                                        <option>Price(Highest)</option>
-                                        <option>Name(A-Z)</option>
-                                        <option>Name(Z-A)</option>
-                                    </select>
-                                </div>
+                            
+                            <div onClick={()=>{setView({
+                                ...view, isListView:true, 
+                                isGridView:false
+                                })}}
+                                >
+                                {
+                                view.isListView?<RiFileListFill fontSize="1.8em"/>
+                                :
+                                <RiFileListLine fontSize="1.8em"/>
+                                }
                             </div>
                         </div>
+                        <div className={styles.product_count}>{productCount} product found</div>
+                        <div className={styles.line}></div>
+                        <div className={styles.short}>
+                            <select onChange={(e)=>{setFilters({
+                                ...filters, 
+                                shortBy:e.target.value
+                                })}} 
+                                className={styles.short_select}
+                                >
+                                <option>Price(lowest)</option>
+                                <option>Price(Highest)</option>
+                                <option>Name(A-Z)</option>
+                                <option>Name(Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div className={styles.grid_container}>
                         {
-                            !productCount?(
-                            <div className='row'>
-                                <div >
-                                    <div className={styles.pageNotFound}>
-                                        <h1 className={styles.test}>product not found!</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            ):
-                            ('')
-                        }
-                        <div className={styles.cardContainer}>
-                            {
-                                products.map((product)=>{
-                                    return(
-                                        view.isGridView && !productCount==0?
-                                        (
-                                        <div className={styles.gridCard} onClick={()=>{clickImage(product)}}>
-                                            <img src={product.image} height="160" width="242"/>
-                                            <div className={styles.gridInfo}>
-                                                <p className={styles.gridName}>{product.name}</p>
-                                                <p className={styles.gridPrice}>${product.price}</p>
+                            products.map((product)=>{
+                                return(
+                                    view.isGridView && !productCount==0?
+                                    (
+                                        <div onClick={()=>{clickImage(product)}} className={styles.grid}>
+                                            <img className={styles.grid_image} src={product.image} />
+                                            <div className={styles.gird_details}>
+                                                <p className={styles.grid_name}>{product.name}</p>
+                                                <p className={styles.grid_price}>${product.price}</p>
                                             </div>
                                         </div>
-                                        )
-                                        :
-                                        view.isListView && !productCount==0?
-                                        (<div className={styles.listCard}>
-                                            <img  src={product.image} height="160" width="282"/>
-                                            <div className={styles.listInfo}>
-                                                <p className={styles.listName}>{product.name}</p>
-                                                <p className={styles.listPrice}>${product.price}</p>
-                                                <p className={styles.listDiscription}>{product.discription}</p>
-                                                <button className={styles.detailsButton} onClick={()=>{clickImage(product)}}>DETAILS</button>
-                                            </div>
-                                        </div>)
-                                        :
-                                        ('')
                                     )
-                                })
-                            }
-                            
-                        </div>
+                                    :
+                                    view.isListView && !productCount==0?
+                                    (
+                                        <>
+                                        <div className={styles.list}>
+                                        <img className={styles.list_image}src={product.image}/>
+                                        </div>
+                                        <div className={styles.list_info}>
+                                        <div className={styles.list_name}>{product.name}</div>
+                                            <div className={styles.list_price}>${product.price}</div>
+                                            <div className={styles.list_detail}>{product.discription}</div>
+                                            <button onClick={()=>{clickImage(product)}} className={styles.list_button}>Details</button> 
+                                        </div>
+                                        </>
+                                    )
+                                    :
+                                    ('')
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
         </div>
-     );
+     ); 
 }
 
 export default HomePage;

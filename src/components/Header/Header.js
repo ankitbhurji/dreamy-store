@@ -1,6 +1,7 @@
 import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom';
 
+
 function Header(props) {
 
     const navigate = useNavigate();
@@ -8,15 +9,17 @@ function Header(props) {
 
     return ( 
         <div>
-            <div className={styles.header}>
-                <div className={styles.path}>
-                <p>Home/</p>
-                <p className={styles.product} onClick={clickProduct}>Product/</p>
-                <p>{props.item}</p>
+            <div className={styles.header_container}>
+                <div className={styles.header}>
+                    <div className={styles.broadcmps}>
+                        <p>Home/</p>&#8209;
+                        <p className={styles.product} onClick={clickProduct}>Product</p>&#8209;
+                        <p>{props.item? (`/${props.item}`) :('')}</p>
+                    </div>
                 </div>
             </div>
         </div>
      );
 }
 
-export default Header;
+export default Header; 
